@@ -45,11 +45,13 @@ Because the original prototype was not preserved with a complete screenshot set,
 
 This submission uses three forms of evidence to show the revival journey:
 
-1. A focused commit series showing persistence, lifecycle, UI, and documentation improvements.
+1. A focused commit series showing persistence, lifecycle, UI, docs, and submission improvements.
 2. Representative code excerpts highlighting behavior changes that reviewers can inspect in the repository.
 3. Reproducible local steps so reviewers can verify persistence behavior by running the app, saving data, exiting, and reopening it.
 
-### Example git commands
+### Commit Sequence Used
+
+These are the exact commands used to create the revival history in this repository:
 
 ```bash
 # Run the app
@@ -67,11 +69,26 @@ git commit -m "Revival: polish UI styling and clean chart update behavior"
 git add README.md FINISH_UP_A_THON_SUBMISSION.md
 git commit -m "Revival: document completion arc and Finish-Up-A-Thon submission"
 
+# Commit 4: supporting evidence docs and license
+git add LICENSE docs/
+git commit -m "chore(submission): add LICENSE and docs for Finish-Up-A-Thon"
+
 # Push the finished revival arc
 git push origin main
 
 # Verify visible history
 git log --oneline --decorate --graph -n 10
+```
+
+### Git timeline (recent)
+
+```text
+* 622e7fd (HEAD -> main, origin/main, origin/HEAD) chore(submission): add LICENSE and docs for Finish-Up-A-Thon
+* eae5c9f Revival: document completion arc and Finish-Up-A-Thon submission
+* 096b5c4 Revival: polish UI styling and clean chart update behavior
+* f719972 Revival: add deterministic persistence and shutdown save flow
+* fcaee2f (tag: v7.1.2, tag: v7.1.1) Fix release workflow
+* 7705eba (tag: v7.1.0) Initial commit
 ```
 
 ### Representative code excerpts (what changed)
