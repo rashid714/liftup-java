@@ -1,6 +1,6 @@
 # LiftUp - Social Protection & Livelihoods Platform
-
 ## Vision: A World Without Poverty
+
 
 LiftUp is a sophisticated desktop application designed to combat poverty by creating a digital ecosystem for social protection and economic empowerment. Our mission is to provide a powerful yet user-friendly tool for non-profits, government agencies, and community leaders to connect vulnerable individuals with life-changing opportunities.
 
@@ -30,7 +30,19 @@ This application serves as a demonstration of how technology can be harnessed to
 - **Data Portability**: Export beneficiary and opportunity data to CSV files.
 - **Sample Data**: Load sample data to quickly explore the application's features.
 
+## Finish-Up-A-Thon Revival
+
+LiftUp already had a working core, but it lacked finish quality. This revival pass focused on reliability and continuity: persistent preferences, deterministic save behavior on app exit, and a cleaner, more stable user flow.
+
+Before this pass, the project behaved like an academic prototype. After the refresh, it behaves like a production-minded desktop tool with stronger data continuity and a clearer completion arc.
+
+GitHub Copilot accelerated the transition by helping tighten lifecycle handling, persistence flow, and UI wiring so the project could be presented as a finished product rather than a rough demo.
+
 ## How to Run
+
+For the full challenge write-up and technical evidence, see:
+
+[FINISH_UP_A_THON_SUBMISSION.md](FINISH_UP_A_THON_SUBMISSION.md)
 
 This project is built with Java 17 and JavaFX, using Maven for dependency management.
 
@@ -41,11 +53,24 @@ This project is built with Java 17 and JavaFX, using Maven for dependency manage
 ### Steps to Run
 1. **Clone the repository or download the source code.**
 2. **Open a terminal or command prompt** and navigate to the project's root directory (where `pom.xml` is located).
-3. **Compile and run the application** using the following Maven command:
+3. **Compile and run the application** using one of the following Maven commands:
    ```shell
    mvn clean compile exec:java -Dexec.mainClass="com.liftup.Launcher"
    ```
+  or
+  ```shell
+  mvn javafx:run
+  ```
 4. The application window will launch.
+
+## Data Persistence
+
+LiftUp stores local data in the user home directory under `.liftup/`:
+
+- `data.json`: Beneficiaries and opportunities.
+- `prefs.json`: Theme and font-scale preferences.
+
+The Save button triggers data serialization immediately, and app shutdown also persists state through the JavaFX lifecycle hook.
 
 ## How to Deploy
 
@@ -69,6 +94,4 @@ This project is built with Java 17 and JavaFX, using Maven for dependency manage
 
 ---
 
-This project is a masterpiece of social impact technology, designed to be both powerful for administrators and understandable for everyone. It stands as a testament to the idea that with the right tools, we can lift communities and build a future free from poverty.
-
-mvn clean compile exec:java -Dexec.mainClass="com.liftup.Launcher"
+LiftUp demonstrates how a JavaFX desktop workflow can support social-impact operations with practical data handling, transparent matching logic, and continuity-focused user experience.
