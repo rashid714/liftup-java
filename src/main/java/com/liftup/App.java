@@ -194,9 +194,16 @@ public class App extends Application {
         scene.getStylesheets().clear();
         if("dark".equals(currentTheme)) scene.getStylesheets().add(getClass().getResource("/com/liftup/views/theme-dark.css").toExternalForm());
         else scene.getStylesheets().add(getClass().getResource("/com/liftup/views/theme-light.css").toExternalForm());
+        settings.setTheme(currentTheme);
+        settings.save();
     }
     private void toggleTheme(boolean dark){ applyTheme(dark?"dark":"light"); }
-    private void applyFontScale(double scale){ fontScale = Math.max(0.8, Math.min(1.8, scale)); scene.getRoot().setStyle("-fx-font-size: "+(int)(16*fontScale)+"px;"); }
+    private void applyFontScale(double scale){
+        fontScale = Math.max(0.8, Math.min(1.8, scale));
+        scene.getRoot().setStyle("-fx-font-size: "+(int)(16*fontScale)+"px;");
+        settings.setFontScale(fontScale);
+        settings.save();
+    }
     private void adjustFont(double delta){ setFontScale(fontScale+delta); }
     private void setFontScale(double value){ applyFontScale(value); }
     private Button btn(String text, String style){ Button b = new Button(text); b.getStyleClass().add(style); return b; }
@@ -621,7 +628,9 @@ public class App extends Application {
                 .sorted(Comparator.comparingDouble(o -> -o.payoutProperty().get()))
                 .limit(5)
                 .forEach(o -> series.getData().add(new XYChart.Data<>(o.payoutProperty().get(), o.titleProperty().get())));
-            payoutBarChart.setData(FXCollections.observableArrayList(series));
+            ObservableList<XYChart.Series<Number, String>> payoutSeries = FXCollections.observableArrayList();
+            payoutSeries.add(series);
+            payoutBarChart.setData(payoutSeries);
         });
 
         // Bar Chart: Beneficiaries by Skill Count
@@ -650,7 +659,9 @@ public class App extends Application {
                     series.getData().add(new XYChart.Data<>(category, entry.getValue()));
                 });
 
-            skillCountBarChart.setData(FXCollections.observableArrayList(series));
+            ObservableList<XYChart.Series<String, Number>> skillCountSeries = FXCollections.observableArrayList();
+            skillCountSeries.add(series);
+            skillCountBarChart.setData(skillCountSeries);
         });
 
 
@@ -713,4 +724,12 @@ public class App extends Application {
     }
 
     public static void main(String[] args){ launch(args); }
+
+    @Override
+    public void stop() {
+        saveAll();
+        settings.setTheme(currentTheme);
+        settings.setFontScale(fontScale);
+        settings.save();
+    }
 }
