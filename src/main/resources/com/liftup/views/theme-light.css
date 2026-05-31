@@ -26,3 +26,5 @@
 .overlay-header { -fx-spacing: 10; -fx-alignment: center-left; }
 .close-btn { -fx-background-color: #e11d48; }
 .back-btn  { -fx-background-color: #334155; }
+.story-card { -fx-min-width: 280; }
+.story-line { -fx-text-fill: #334155; -fx-padding: 0 0 2 0; }
