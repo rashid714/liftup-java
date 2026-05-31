@@ -38,11 +38,13 @@ Before this pass, the project behaved like an academic prototype. After the refr
 
 GitHub Copilot accelerated the transition by helping tighten lifecycle handling, persistence flow, and UI wiring so the project could be presented as a finished product rather than a rough demo.
 
-## How to Run
+## Finish-Up-A-Thon Submission
 
 For the full challenge write-up and technical evidence, see:
 
 [FINISH_UP_A_THON_SUBMISSION.md](FINISH_UP_A_THON_SUBMISSION.md)
+
+## How to Run
 
 This project is built with Java 17 and JavaFX, using Maven for dependency management.
 
