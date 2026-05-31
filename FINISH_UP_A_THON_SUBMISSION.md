@@ -2,7 +2,7 @@
 
 Author: Akbar Riyad Mohamed Rasid
 
-Repository: https://github.com/rashid714/liftup-java.git
+Repository: https://github.com/rashid714/liftup-java
 
 Challenge: GitHub Finish-Up-A-Thon
 
@@ -51,7 +51,7 @@ This submission uses three forms of evidence to show the revival journey:
 
 ### Commit Sequence Used
 
-These are the exact commands used to create the revival history in this repository:
+The revival history was organized using the following focused commit sequence:
 
 ```bash
 # Run the app
@@ -115,7 +115,7 @@ public void stop() throws Exception {
 
 CSS fix example (high level): removed an invalid numeric token that produced a JavaFX parse error, moving the sizing logic to Java code for deterministic layout.
 
-### Suggested "Before / After" table to include in your post (copy into README or DEV)
+### Before / After Summary
 
 | Area             | Before                    | After                               |
 | ---------------- | ------------------------- | ----------------------------------- |
